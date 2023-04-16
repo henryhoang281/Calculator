@@ -1,0 +1,44 @@
+.calculator {
+    display:flex;
+    flex-wrap: wrap;
+    flex: 0 1 60%;
+    min-width:400px;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 100px;
+}
+
+.calculator-display {
+    background-color: black;
+    color: white;
+    height: 50px;
+    text-align: right;
+    padding: 6px;
+    font-size: 50px;
+    width: 403px;
+}
+
+.operator {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: repeat(5, 100px);
+    grid-gap: 5px;
+    background-color: black;
+}
+
+.equal {
+    grid-column: 3 / -1;
+    font-size: 30px;
+}
+
+.reset, .positive-negative, .percentage, .divide, .number, .add, .minus, .multiply, .decimal {
+    font-size: 30px;
+}
+
+.divide, .add, .minus, .multiply, .equal {
+    background-color: #FF9500;
+}
+
+body {
+    background-color: #505050;
+}
