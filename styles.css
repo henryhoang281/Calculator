@@ -40,5 +40,27 @@
 }
 
 body {
+    background-color:#D4D4D2
+}
+
+.number, .decimal {
     background-color: #505050;
 }
+
+.number:hover, .decimal:hover {
+    background-color: #D4D4D2;
+}
+
+.reset:hover, .positive-negative:hover, .percentage:hover {
+    background-color: #D4D4D2;
+}
+
+.add:hover, .minus:hover, .multiply:hover, .equal:hover, .divide:hover {
+    background-color: white;
+    color: black;
+}
+
+.number, .decimal, .multiply, .equal, .add, .divide, .minus {
+    color: white;
+}
+
