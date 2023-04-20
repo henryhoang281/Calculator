@@ -9,7 +9,7 @@ const equalButton = document.querySelector('.equal');
 const resetButton = document.querySelector('.reset');
 const percentageButton = document.querySelector('.percentage');
 const decimalButton = document.querySelector('.decimal');
-const positiveNegativeButtons = document.querySelector('.positive-negative');
+const absoluteButton = document.querySelector('.absolute');
 
 function add(a, b){
     return a + b;
@@ -37,9 +37,9 @@ function operate(num1, num2, operator){
     }
 }
 
-function displayNum(number){
+function displayNum(num){
     if(num1.length <= 10) {
-    num1 += number;
+    num1 += num;
     calculatorDisplay.textContent = num1;
 }}
 numButtons.forEach((btn) => {
@@ -56,4 +56,16 @@ function resetCalculator(){
 }
 resetButton.addEventListener('click', resetCalculator);
 
+decimalButton.addEventListener('click', (e) => {
+    if(!num1.includes('.')){
+    num1 += '.';
+    calculatorDisplay.textContent = num1;
+}})
 
+absoluteButton.addEventListener('click', (e) => {
+    calculatorDisplay.textContent = -1 * calculatorDisplay.textContent;
+})
+
+percentageButton.addEventListener('click', (e) => {
+    calculatorDisplay.textContent = calculatorDisplay.textContent / 100;
+})
