@@ -2,45 +2,68 @@
     display:flex;
     flex-wrap: wrap;
     flex: 0 1 60%;
-    min-width:400px;
     flex-direction: column;
     align-items: center;
-    padding-top: 100px;
+    padding: 50px 20px;
+    border: 5px solid #666666;
+    border-radius: 15px;
+    width: fit-content;
+    block-size: fit-content;
+    margin: auto;
+    margin-top: 100px;
 }
 
-.calculator-display {
+.previous-number {
+    color: white;
+    font-size: 35px;
+    text-align: right;
+    margin-top: 1px;
+    padding-right: 40px;
+}
+
+.current-number {
     background-color: black;
     color: white;
-    height: 50px;
+    height: 65px;
     text-align: right;
     padding: 6px;
     font-size: 50px;
-    width: 403px;
+    width: 397px;
+    border-radius: 15px;
+    border-style: solid;
+    border-color: #FF9500;
+    margin: 30px;
 }
 
-.operator {
+.calculator-operator {
     display: grid;
-    grid-template-columns: repeat(4, 100px);
-    grid-template-rows: repeat(5, 100px);
-    grid-gap: 5px;
+    grid-template-columns: repeat(4, 90px);
+    grid-template-rows: repeat(5, 90px);
+    grid-gap: 3px;
     background-color: black;
 }
 
 .equal {
     grid-column: 3 / -1;
     font-size: 30px;
+    border-radius: 15px;
+    border-color: black;
+    border-style: solid;
 }
 
-.reset, .positive-negative, .percentage, .divide, .number, .add, .minus, .multiply, .decimal {
+.reset, .absolute, .percentage, .number, .decimal, .operators {
     font-size: 30px;
+    border-radius: 50%;
+    border-style: solid;
+    border-color: black;
 }
 
-.divide, .add, .minus, .multiply, .equal {
+.equal, .operators {
     background-color: #FF9500;
 }
 
 body {
-    background-color:#D4D4D2
+    background-color:black;
 }
 
 .number, .decimal {
@@ -51,16 +74,15 @@ body {
     background-color: #D4D4D2;
 }
 
-.reset:hover, .positive-negative:hover, .percentage:hover {
+.reset:hover, .absolute:hover, .percentage:hover {
     background-color: #D4D4D2;
 }
 
-.add:hover, .minus:hover, .multiply:hover, .equal:hover, .divide:hover {
+.equal:hover, .operators:hover {
     background-color: white;
     color: black;
 }
 
-.number, .decimal, .multiply, .equal, .add, .divide, .minus {
+.number, .decimal, .equal, .operators {
     color: white;
 }
-

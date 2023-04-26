@@ -1,71 +1,83 @@
-let num1 = '';
-let num2 = '';
+let currentNum = '';
+let previousNum = '';
 let operator = '';
 
-const calculatorDisplay = document.querySelector('.calculator-display');
+const previousNumDisplay = document.querySelector('.previous-number');
+const currentNumDisplay = document.querySelector('.current-number');
 const numButtons = document.querySelectorAll('.number');
-const operatorButtons = document.querySelectorAll('.operator');
+const operatorButtons = document.querySelectorAll('.operators');
 const equalButton = document.querySelector('.equal');
 const resetButton = document.querySelector('.reset');
 const percentageButton = document.querySelector('.percentage');
 const decimalButton = document.querySelector('.decimal');
 const absoluteButton = document.querySelector('.absolute');
 
-function add(a, b){
-    return a + b;
-}
-function abstract(a, b){
-    return a - b;
-}
-function multiply(a, b){
-    return a * b;
-}
-function divide(a, b){
-    return a / b;
-}
 
-function operate(num1, num2, operator){
-    switch(operator) {
-        case '+':
-            return add(num1, num2);
-        case '-':
-            return abstract(num1, num2);
-        case '*':
-            return multiply(num1, num2);
-        case '/':
-            return divide(num1, num2);
-    }
+function operate(){
+    previousNum = Number(previousNum);
+    currentNum = Number(currentNum);
+
+    if (operator === '+') {
+        previousNum += currentNum; 
+    }else if(operator === '-'){    
+        previousNum -= currentNum;
+    }else if(operator === 'x'){
+        previousNum *= currentNum;
+    }else if(operator === '/'){
+        previousNum /= currentNum;
+    } 
+    previousNumDisplay.textContent = 0;
+    currentNumDisplay.textContent = previousNum;
 }
 
 function displayNum(num){
-    if(num1.length <= 10) {
-    num1 += num;
-    calculatorDisplay.textContent = num1;
+    if(currentNum.length <= 10) {
+    currentNum += num;
+    currentNumDisplay.textContent = currentNum;
 }}
+
+function displayOperator(op){
+    operator = op;
+    previousNum = currentNum;
+    previousNumDisplay.textContent = previousNum + ' ' + operator
+    currentNum = '';
+    currentNumDisplay.textContent = 0;
+}
+
+function resetCalculator(){
+    currentNum = '';
+    previousNum = '';
+    operator = '';
+    currentNumDisplay.textContent = '0';
+    previousNumDisplay.textContent = '0';
+}
+
+operatorButtons.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+        displayOperator(e.target.textContent)
+    })
+})
+
 numButtons.forEach((btn) => {
     btn.addEventListener('click', (e) => {
         displayNum(e.target.textContent);
     });
 });
 
-function resetCalculator(){
-    num1 = '';
-    num2 = '';
-    operator = '';
-    calculatorDisplay.textContent = '0';
-}
 resetButton.addEventListener('click', resetCalculator);
 
 decimalButton.addEventListener('click', (e) => {
     if(!num1.includes('.')){
-    num1 += '.';
-    calculatorDisplay.textContent = num1;
+    currentNum += '.';
+    currentNumDisplay.textContent = currentNum;
 }})
 
 absoluteButton.addEventListener('click', (e) => {
-    calculatorDisplay.textContent = -1 * calculatorDisplay.textContent;
+    currentNumDisplay.textContent = -1 * currentNumDisplay.textContent;
 })
 
 percentageButton.addEventListener('click', (e) => {
-    calculatorDisplay.textContent = calculatorDisplay.textContent / 100;
+    currentNumDisplay.textContent = currentNumDisplay.textContent / 100;
 })
+
+equalButton.addEventListener('click', operate);
